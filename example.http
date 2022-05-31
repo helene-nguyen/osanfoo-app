@@ -2,3 +2,25 @@
 
 #__________________HOME PAGE
 GET {{entryPoint}}
+
+###
+
+#__________________USERS
+GET {{entryPoint}}/users
+
+###
+
+#__________________Find one
+GET {{entryPoint}}/users/16
+###
+
+#__________________Create user
+POST {{entryPoint}}/users
+Content-type: application/json
+
+{
+    "username": "a",
+    "email": "a@a.com",
+    "password":  "1234",
+    "role_id": 2
+}
