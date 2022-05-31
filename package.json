@@ -1,0 +1,21 @@
+{
+  "type": "module",
+  "name": "osanfoo",
+  "version": "1.0.0",
+  "description": "Experimental Shop",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon --inspect index.js"
+  },
+  "author": "yumicode",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "dotenv": "^16.0.1",
+    "email-validator": "^2.0.4",
+    "express": "^4.18.1",
+    "express-session": "^1.17.3",
+    "pg": "^8.7.3"
+  }
+}
