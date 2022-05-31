@@ -1,10 +1,9 @@
 //~import pg module
 //module pg for CommonJs, need to import by default first
-import pkg from 'pg';
-const { Client } = pkg;
+import pg from 'pg';
 
 //~create new client
-const client = new Client();
+const client = new pg.Client();
 
 //~connect client
 client.connect();

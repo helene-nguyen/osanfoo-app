@@ -2,7 +2,7 @@ function _400(req, res) {
     res.status(400).json('BAD REQUEST');
 };
 function _401(req, res) {
-    res.status(401).json('AUTHENTIFICATION ERROR');
+    res.status(401);
 };
 function _403(req, res) {
     res.status(403).json('ACCESS DENIED');

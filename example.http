@@ -19,8 +19,9 @@ POST {{entryPoint}}/users
 Content-type: application/json
 
 {
-    "username": "a",
-    "email": "a@a.com",
-    "password":  "1234",
+    "username": "Fredooooo",
+    "email": "f@fa.com",
+    "password":  "123456",
+    "passwordConfirm": "123456",
     "role_id": 2
 }
