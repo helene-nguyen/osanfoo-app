@@ -1,6 +1,6 @@
 //~import modules
 import { _500, _401 } from "./errorController.js";
-import { findAll, findOne, createUser, findOneByUsername, findOneByEmail } from "../datamappers/user.js";
+import { findAll, findOne, createUser, findOneByUsername, findOneByEmail, deleteUser } from "../datamappers/user.js";
 //#protect DB
 import bcrypt from "bcrypt";
 import emailValidator from "email-validator";
@@ -29,7 +29,8 @@ schema.is().min(6); // Minimum length 6 // Blacklist these values //~controller
 
 async function fetchOneUser(req, res) {
   try {
-    const user = await findOne(req.params.id);
+    //the symbol + turn string into number
+    const user = await findOne(+req.params.id);
 
     res.json(user);
   } catch (err) {
@@ -58,13 +59,25 @@ async function createNewUser(req, res) {
     console.log("password: ", password);
 
     //~create user
-    await createUser({...req.body, password});
+    await createUser({ ...req.body, password });
 
     res.json(`Welcome ${username}, you are regitered !`);
-
   } catch (err) {
     _500(err, req, res);
   }
 }
 
-export { fetchAllUsers, fetchOneUser, createNewUser };
+async function deleteOneUser(req, res) {
+  try {
+    const userExist = await findOne(+req.params.id);
+
+    if (!userExist) return res.json(`User doesn't exist !`);
+
+    await deleteUser(+req.params.id);
+    res.json(`User ${userExist.username} was deleted !`);
+  } catch (err) {
+    _500(err, req, res);
+  }
+}
+
+export { fetchAllUsers, fetchOneUser, createNewUser, deleteOneUser };

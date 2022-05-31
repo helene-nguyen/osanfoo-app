@@ -53,9 +53,9 @@ async function createUser(userData) {
 async function findOneByUsername(username) {
   const query = {
     text: `
-            SELECT *
-            FROM "${TABLE_NAME}"
-            WHERE "username" = $1;`,
+        SELECT *
+        FROM "${TABLE_NAME}"
+        WHERE "username" = $1;`,
     values: [username]
   };
 
@@ -67,9 +67,9 @@ async function findOneByUsername(username) {
 async function findOneByEmail(email) {
   const query = {
     text: `
-            SELECT *
-            FROM "${TABLE_NAME}"
-            WHERE "email" = $1;`,
+        SELECT *
+        FROM "${TABLE_NAME}"
+        WHERE "email" = $1;`,
     values: [email]
   };
 
@@ -78,4 +78,21 @@ async function findOneByEmail(email) {
   return result.rows[0];
 }
 
-export { findAll, findOne, findOneByUsername, findOneByEmail, createUser };
+//^_____________Update one user
+
+//^_____________Delete one user
+async function deleteUser(targetId) {
+  const query = {
+    text: `
+        DELETE FROM "${TABLE_NAME}"
+        WHERE "id" = $1;`,
+    values: [targetId]
+    };
+    
+    const result = await client.query(query);
+
+    return result.rowCount;
+
+}
+
+export { findAll, findOne, findOneByUsername, findOneByEmail, createUser, deleteUser };
