@@ -1,0 +1,4 @@
+@entryPoint = http://localhost:4100
+
+#__________________HOME PAGE
+GET {{entryPoint}}
